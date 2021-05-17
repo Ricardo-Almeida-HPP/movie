@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+.header{
+    height: 100vh;
+}
+.navbar-style{
+    box-shadow: 0 5px 10px pink;
+    text-transform: uppercase;
+} 
+.logo{
+    height: 48px;
+    padding: 2px 10px;
+}
+.icon-bar{
+    background: darkred;
+}
+
+.btn-default{
+    color: white;
+}
+.sr-only{
+    color: red;
+    background-color:yellow;
+}
+
+.row-cols-1{
+    margin-top: 30px;
+}
+
+#navbarResponsive{
+    margin-left: 20px;
+}
+.card {
+    margin-top: 30px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    min-height: 300px;
+    max-height: 700px;
+}
+
+.h1{
+    margin-top: 80px;
+    color: white;
+}
+.stretched-link{
+    margin-top: 102px;
+    color: green;
+}
+.card-title{
+    color: darkred;
+}
+
+.card-text{
+    color:darkgrey;
+    opacity: 50%;
+}
+
+.card .btn{
+    background-color: black;
+}
+.btn-outline-warning{
+    margin-left: 6px;
+}
+
+.fa-bell{
+    color: green;
+}
+.fa-power-off{
+    color: darkred;
+}
+
+.btn-group{
+    margin-top: 100px;
+}
+.btn-admin{
+    margin-top: 300px;
+}
+
+.btn-group .btn{
+    color:white;
+    background-color: black;
+    border-inline-color: black;
+    border-top-color: black;
+
+}
+
+.btn-group .h3{
+    color: white;
+}
+
+.form-pass{
+    margin-top: 50px;
+    color:darkred;
+}
+
+.form-pass2{
+    margin-top: 50px;
+    color:darkred;
+}
+
+.form-edit .btn{
+    background-color: black;
+    border-inline-color: black;
+    border-top-color: black;
+    color: white;
+}
+.table{
+    margin-top: 100px;
+}
+
+.hidden{
+    display: none ;
+}
+
+.fa-arrow-left{
+    background-color: darkgreen;
+}
+
+

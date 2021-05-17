@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="stylesheet" type="text/css" href="estilo1.css">
+    <link rel="stylesheet" type="text/css" href="estilo2.css">
+    <link rel="stylesheet" type="text/css" href="estilo3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/primer-css/build/build.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  </head>
+<body>
+    <!--Main-->
+    <header class="header">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <img class="logo" src="https://cache.getlazarus.org/images/movie-icon.png" class="card-link" onclick="openPage('Home', this)"></img>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="hidden" id="show">
+              <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" onclick="openPage('Home', this)">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" onclick="openPage('Movies', this)">Movies
+                  <span class="sr-only">(current)</span>
+                </a>
+              <li class="nav-item active">
+                <a class="nav-link" onclick="openPage('Directors', this)">Directors
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" onclick="openPage('Actors', this)">Actors
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" onclick="openPage('Studios', this)">Studios
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li> 
+              <li class="nav-item active">
+                <a class="nav-link" id="profile-name" onclick="openPage('edit', this)">Profile
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="openPage('About', this)">About</a>
+              </li> 
+              <button type="button" class="btn btn-outline-none">
+                <i class="fa fa-bell"></i> <span class="badge badge-success">9</span>
+                <span class="sr-only">unread messages</span>
+              </button>
+              <button type="button" onclick="y()" class="btn btn-outline-none "><i class="fa fa-power-off"></i></button>
+            </ul>
+            </div>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" onclick="openPage('Login', this)" id="lg">Login
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="openPage('Loginad', this)">Restricted</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+     </nav>
+
+      <div class="tabcontent" id="Register">
+        <div class="form_bg">
+          <div class="container">
+            <div class="row justify-content-center align-items-center h-100">
+              <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6" >
+                <form class="form_horizontal" onsubmit="return false">
+                  <div class="form_icon"><i class="fa fa-user-circle"></i></div>
+                  <h3 class="title">Register</h3>
+                  <div class="form-group"> 
+                    <span class="input-icon"><i class="fa fa-user"></i></span> 
+                    <input id="newUsername" class="form-control" type="username" name="name" placeholder="username" required>
+                  </div>             
+                  <div class="form-group">  
+                    <span class="input-icon"><i class="fa fa-lock"></i></span>
+                    <input id="newPassword" class="form-control" type="password" name="password" placeholder="password" required>
+                  </div>   
+                  <div class="form-group">  
+                    <span class="input-icon"><i class="fa fa-lock"></i></span>
+                    <input id="newPassword2" class="form-control" type="password" name="password2" placeholder="confirm password" required>
+                  </div> 
+                  <div class="form-group">  
+                    <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                    <input id="newEmail" class="form-control" type="email" name="email" placeholder="email" required>
+                  </div>             
+                  <button class="btn signin" id="registerUser" type="submit" onclick="registerUser()">Register User</button>
+                  <button class="btn signin" onclick="openPage('Login', this)"><i class="fa fa-arrow-left"></i>Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+
+      <div class="tabcontent" id="Login">
+          <div class="form_bg">
+            <div class="container">
+              <div class="row justify-content-center align-items-center h-100">
+                <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6" >
+                  <form class="form_horizontal" onsubmit="return false">
+                    <div class="form_icon"><i class="fa fa-user-circle"></i></div>
+                    <h3 class="title">Login</h3>
+                    <div class="form-group">
+                      <span class="input-icon"><i class="fa fa-user"></i></span>
+                      <input id="username" class="form-control" type="username" placeholder="username" required >
+                    </div>
+                    <div class="form-group">  
+                      <span class="input-icon"><i class="fa fa-lock"></i></span>
+                      <input id="password" class="form-control" type="password" placeholder="password" required>
+                    </div>             
+                    <button class="btn signin" id="logar" >Login</button>
+                    <ul class="form-options">
+                      <li><a onclick="openPage('Recovery', this)" >Forgot Username/Password?</a></li>
+                      <li><a onclick="openPage('Register', this)">Create New Account <i class="fa fa-arrow-right"></i></a></li>
+                    </ul>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+      </div>
+
+      <div class="tabcontent" id="Recovery">
+        <div class="form_bg">
+          <div class="container">
+            <div class="row justify-content-center align-items-center h-100">
+              <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6" >
+                <form class="form_horizontal">
+                  <div class="form_icon"><i class="fa fa-user-circle"></i></div>
+                  <h3 class="title">Recovery</h3>
+                  <div class="form-group">
+                    <span class="input-icon"><i class="fa fa-user"></i></span>
+                    <input id="email" class="form-control" type="email" placeholder="email" required>
+                  </div>        
+                  <button class="btn signin" onclick="done()">Recovery</button>
+                  <ul class="form-options">
+                  </ul>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tabcontent" id="About">
+        <div class="card" style="width: 50rem;" id="about-card">
+          <img src="https://trendy.pt/wp-content/uploads/2019/12/Nos-SreenX-cinema.png" class="card-img-top" alt="1">
+          <div class="card-body">
+            <h5 class="card-title" id="about-title">About</h5>
+            <p class="card-text">we are a company that promotes the comfort of all our customers.We offer a perfect service, which offers its members access to exclusive films and television series, streamed over the internet to certain televisions, computers and other devices connected to the internet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabcontent" id="Loginad">
+        <div class="form_bg">
+          <div class="container">
+            <div class="row justify-content-center align-items-center h-100">
+              <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6" >
+                <form class="form_horizontal">
+                  <div class="form_icon"><i class="fa fa-lock"></i></div>
+                  <h3 class="title">Admin</h3>
+                  <div class="form-group">
+                    <span class="input-icon"><i class="fa fa-user"></i></span>
+                    <input id="adminusername" class="form-control" type="username" placeholder="username" required>
+                  </div>
+                  <div class="form-group">  
+                    <span class="input-icon"><i class="fa fa-lock"></i></span>
+                    <input id="adminpassword" class="form-control" type="password" placeholder="password" required>
+                  </div>             
+                  <submit class="btn signin" onclick="logad()">Login</submit>
+                </form>   
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="tabcontent" id="editad">
+          <div class="container">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="h3" > Admin  <i class="fa fa-lock"></i></div>
+                <button type="button" class="btn btn-secondary" onclick="openPage('admov', this)">Movies</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('adact', this)">Actors</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('adic', this)">Directors </button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('adstud', this)">Studios</button>
+            </div>
+          </div>
+      </div>
+
+      <div class="tabcontent" id="admov">
+          <div class="container">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                  <div class="h3" > Admin  <i class="fa fa-lock"></i></div>
+                  <button type="button" class="btn btn-primary" onclick="openPage('admov', this)">Movies</button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adact', this)">Actors</button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adic', this)">Directors </button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adstud', this)">Studios</button>
+              </div>
+        <table class="table table-striped table-dark">
+          <tbody>
+        <form>
+          <div class="form-group" >
+            <label for="formGroupExampleInput" class="forma"  >New Movie Name</label>
+            <input type="text" class="form-control" id="newmoviename">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="forma" >New Movie Type</label>
+            <input type="text" class="form-control" id="newtype">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="forma">New Movie Image</label>
+            <input type="text" class="form-control" id="newmovieimage">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2" class="forma" >New Movie OP</label>
+            <input type="text" class="form-control" id="newop">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2" class="forma" >New Movie Resume</label>
+            <input type="text" class="form-control" id="newresume">
+          </div>
+          <button type="submit" class="btn btn-primary" id="add-movie" value="" onclick="am()">Add</button>
+        </form>
+            {{#each movies}}
+            <tr class="" id="ele" value="{{id}}">
+              <th scope="row">{{id}}</th>
+              <td><div >{{name_movie}}</div></td> 
+              <td><button type="button" class="btn btn-danger" id="removem" value="{{id}}" onclick="rm({{id}})">Remove</button></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="tabcontent" id="adact">
+          <div class="container">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                  <div class="h3" > Admin  <i class="fa fa-lock"></i></div>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('admov', this)">Movies</button>
+                  <button type="button" class="btn btn-primary" onclick="openPage('adact', this)">Actors</button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adic', this)">Directors </button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adstud', this)">Studios</button>
+              </div>
+        <table class="table table-striped table-dark">
+          <tbody>
+        <form>
+          <div class="form-group" >
+            <label for="formGroupExampleInput" class="forma"  >New Actor Name</label>
+            <input type="text" class="form-control" id="newactorname">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="forma" >New Actor Bio</label>
+            <input type="text" class="form-control" id="newactorbio">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="forma">New Actor Image</label>
+            <input type="text" class="form-control" id="newactorimage">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2" class="forma" >New Actor OP</label>
+            <input type="text" class="form-control" id="newactorop">
+          </div>
+          <button type="submit" class="btn btn-primary" id="add-movie" value="" onclick="aa()">Add</button>
+        </form>
+            {{#each actors}}
+            <tr class="" id="ele" value="{{id}}">
+              <th scope="row">{{id}}</th>
+              <td><div >{{name_actor}}</div></td> 
+              <td><button type="button" class="btn btn-danger" id="removea" value="{{id}}" onclick="ra({{id}})">Remove</button></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="tabcontent" id="adic">
+          <div class="container">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                  <div class="h3" > Admin  <i class="fa fa-lock"></i></div>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('admov', this)">Movies</button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adact', this)">Actors</button>
+                  <button type="button" class="btn btn-primary" onclick="openPage('adic', this)">Directors </button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adstud', this)">Studios</button>
+              </div>
+        <table class="table table-striped table-dark">
+          <tbody>
+        <form>
+          <div class="form-group" >
+            <label for="formGroupExampleInput" class="forma"  >New Director Name</label>
+            <input type="text" class="form-control" id="newdirectorname">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="forma" >New Director Bio</label>
+            <input type="text" class="form-control" id="newdirectorbio">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="forma">New Director Image</label>
+            <input type="text" class="form-control" id="newdirectorimage">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2" class="forma" >New Director OP</label>
+            <input type="text" class="form-control" id="newdirectorop">
+          </div>
+          <button type="submit" class="btn btn-primary" id="add-director" value="" onclick="ad()">Add</button>
+        </form>
+            {{#each directors}}
+            <tr class="" id="ele" value="{{id}}">
+              <th scope="row">{{id}}</th>
+              <td><div >{{name_dir}}</div></td> 
+              <td><button type="button" class="btn btn-danger" id="removea" value="{{id}}" onclick="rd({{id}})">Remove</button></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="tabcontent" id="adstud">
+          <div class="container">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                  <div class="h3" > Admin  <i class="fa fa-lock"></i></div>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('admov', this)">Movies</button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adact', this)">Actors</button>
+                  <button type="button" class="btn btn-secondary" onclick="openPage('adic', this)">Directors </button>
+                  <button type="button" class="btn btn-primary" onclick="openPage('adstud', this)">Studios</button>
+              </div>
+        <table class="table table-striped table-dark">
+          <tbody>
+        <form>
+          <div class="form-group" >
+            <label for="formGroupExampleInput" class="forma"  >New Studio Name</label>
+            <input type="text" class="form-control" id="newstudioname">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="forma" >New Studio Bio</label>
+            <input type="text" class="form-control" id="newstudiobio">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput" class="forma">New Studio Image</label>
+            <input type="text" class="form-control" id="newstudioimage">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2" class="forma" >New Studio OP</label>
+            <input type="text" class="form-control" id="newstudioop">
+          </div>
+          <button type="submit" class="btn btn-primary" id="add-studio" value="" onclick="as()">Add</button>
+        </form>
+            {{#each studios}}
+            <tr class="" id="ele" value="{{id}}">
+              <th scope="row">{{id}}</th>
+              <td><div >{{name_studio}}</div></td> 
+              <td><button type="button" class="btn btn-danger" id="removea" value="{{id}}" onclick="rs({{id}})">Remove</button></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="tabcontent" id="Home">
+        <div class="container">
+          <div class="row">
+            <img src="https://thumbs.dreamstime.com/b/pipoca-estalada-fresca-com-o-bilhete-no-fundo-preto-46916261.jpg" class="home-img" >            
+            <h1 class="text-home" id="t1">Welcome to your home cinema</h1>
+            <h4 class="text-home" id="t2">Stay cozy, keep watching...</h4>
+            </div>
+        </div>
+      </div> 
+
+        <!--MOVIES-->
+        <div class="tabcontent" id="Movies">
+          <div class="container">
+            <div class="row">
+              <p class="h1">Movies</p>
+                <div class="row row-cols-1 row-cols-md-3">
+                  {{#each movies}}
+                    <div class="col mb-4">
+                        <div class="card">  
+                          <img src="{{image}}" onclick="openPage("{{op}}", this)" class="card-img-top" alt="1" width="280" height="525">
+                          <button   onclick="addf({{id}})" type="button" class="btn btn-dark" id="addm" value="{{id}}">Add To Favorites?</button>
+                          <div class="card-body">
+                            <h5 class="card-title" onclick="openPage('{{op}}', this)">{{name_movie}} </h5>
+                            <p class="card-text">{{Tipo}}</p>
+                          </div>
+                        </div>
+                      </div>    
+                  {{/each}}
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        {{#each movies}}
+        <div class="tabcontent" id="{{op}}">
+          <div class="container">
+            <div class="row">
+              <p class="h1">{{name_movie}}</p>
+              <div class="media">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">Resume</h5>
+                    <p class="p-0">
+                      {{Resume}}
+                    </p>
+                    <div class="credit_summary_item">
+                        <h5 class="d-inline">Director: </h5>
+                        <a class="a" onclick="openPage('Sam Taylor-Johnson', this)">Sam Taylor-Johnson</a>
+                    </div>
+                    <div class="credit_summary_item">
+                        <h5 class="d-inline">Actors : </h5>
+                        <a class="a" onclick="openPage('Jamie Dornan', this)">Jamie Dornan</a>
+                    </div>
+                    <div class="credit_summary_item">
+                        <h5 class="d-inline">Distributed by : </h5>
+                        <a class="a" onclick="openPage('Universal', this)">Universal Pictures</a>
+                    </div>
+                </div>
+                <img src="{{image}}" class="ml-3" alt="1" width="400" height="570">
+              </div>
+            </div>
+        </div>
+
+        </div>
+        {{/each }}
+        
+        <!--DIRECTORS-->
+        <div class="tabcontent" id="Directors">
+          <div class="container">
+            <div class="row">
+                <p class="h1">Directors</p>
+                <div class="row row-cols-1 row-cols-md-3">
+                    {{#each directors}}
+                    <div class="col mb-4">
+                      <div class="card dir">
+                        <img src="{{image}}" class="card-img-top" alt="3" width="280" height="500">
+                        <button onclick="addd({{id}})" type="button" class="btn btn-dark" id="addd" value="{{id}}">Add To Favorites?</button>
+                        <div class="card-body">
+                          <h5 class="card-title" onclick="openPage('{{op}}', this)">{{name_dir}}</h5>
+                          <p class="card-text"><a class="card-link" onclick="openPage('{{op}}', this)">More</a></p>
+                        </div>
+                      </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        {{#each directors}}
+        <div class="tabcontent" id="{{op}}">
+          <div class="container">
+            <div class="row">
+              <p class="h1">{{name_dir}}</p>
+              <div class="media">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">Biography</h5>
+                    <p class="p-0">
+                    {{bio}}       
+                   </p>
+                    {{#each share}}
+                    <div class="credit_summary_item">
+                        <h5 class="d-inline">Participate in: </h5>
+                        <a class="a" onclick="openPage('{{op}}', this)">{{name}}</a>
+                    </div>
+                    {{/each}}
+                </div>
+                <img src="{{image}}" class="ml-3" alt="1" width="400" height="570">
+              </div>
+            </div>
+        </div>
+        </div>
+        {{/each }}
+
+        <!--ACTORS-->
+        <div class="tabcontent" id="Actors">
+          <div class="container">
+            <div class="row">
+                <p class="h1">Actors</p>
+                <div class="row row-cols-1 row-cols-md-3">
+                  {{#each actors}}
+                    <div class="col mb-4">
+                      <div class="card">
+                        <img src="{{image}}" class="card-img-top" alt="3" width="280" height="500">
+                        <button onclick="aa1(this)" type="button" class="btn btn-dark" id="ba1">Add To Favorites?</button>
+                        <div class="card-body">
+                          <h5 class="card-title" onclick="openPage('{{op}}', this)">{{name_actor}}</h5>
+                          <p class="card-text"><a class="card-link" onclick="openPage('{{op}}', this)">More</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  {{/each}}
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+        {{#each actors}}
+        <div class="tabcontent" id="{{op}}">
+          <div class="container">
+            <div class="row">
+              <p class="h1">{{name_actor}}</p>
+              <div class="media">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">Biography</h5>
+                    <p class="p-0">
+                    {{bio}}
+                    </p>
+                    <div class="credit_summary_item">
+                        <h5 class="d-inline">Participate in: </h5>
+                        <a class="a" onclick="openPage('50', this)">50 shades of Grey</a>
+                    </div>
+                    
+                </div>
+                <img src="{{image}}" class="ml-3" alt="1" width="400" height="570">
+              </div>
+            </div>
+        </div>
+
+        </div>
+        {{/each}}
+
+        <!--STUDIOS-->
+        <div class="tabcontent" id="Studios">
+          <div class="container">
+            <div class="row">
+                <p class="h1">Studios</p>
+                <div class="row row-cols-1 row-cols-md-2">
+                    {{#each studios}}
+                    <div class="col mb-4">
+                      <div class="card">
+                        <img src="{{image}}" class="card-img-top" alt="2" width="280" height="300">
+                        <button onclick="as1(this)" type="button" class="btn btn-dark" id="bs1">Add To Favorites?</button>
+                        <div class="card-body">
+                          <h5 class="card-title" onclick="openPage('{{op}}', this)">{{name_studios}}</h5>
+                          <p class="card-text"><a class="card-link" onclick="openPage('{{op}}', this)">More</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  {{/each}}
+                </div>
+            </div>
+        </div>
+        </div>
+
+        {{#each studios}}
+        <div class="tabcontent" id="{{op}}">
+          <div class="container">
+            <div class="row">
+              <p class="h1">{{name_studio}}</p>
+              <div class="media">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">History</h5>
+                    <p class="p-0">
+                      {{bio}}                   
+                    </p>
+                    <div class="credit_summary_item">
+                      <h5 class="d-inline">Associated Movies: </h5>
+                      <a class="a" onclick="openPage('50', this)">50 Shades of Grey</a>
+                      <a class="a" >;</a>
+                      <a class="a" onclick="openPage('Mortal', this)">Mortal Engines</a>
+                    </div>
+                </div>
+                <img src="{{image}}" class="ml-3" alt="1" width="400" height="570">
+              </div>
+            </div>
+        </div>
+
+        </div>
+        {{/each}}
+
+        <!--PARAMETROS-->
+
+
+        <!--Profile-->
+        <div class="tabcontent" id="edit">
+          <div class="container">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="h3" > My Profile  <i class="fa fa-user-o"></i></div>
+                <button type="button" class="btn btn-primary" onclick="openPage('edit', this)">Edit account</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fm', this)">Favourite movies</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fa', this)">Favourite actors</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fd', this)">Favourite directors</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fs', this)">Favourite studios</button>
+            </div>
+            <form class="form form-edit">   
+              <div class= form-pass>
+              <div class="form-group">
+                  <label for="exampleInputPassword1">Old password</label>
+                  <input id="opassword" type="password" class="form-control">
+                </div>
+              <div class="form-group">
+                <label for="exampleInputPasswor2">New password</label>
+                <input id="cpassword" type="password" class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword3">Confirm new password</label>
+                  <input id="cpassword2" type="password" class="form-control" >
+                </div>
+              <button id="cp" type="submit" class="btn btn-primary" onclick="updateP()">Submit</button>
+              </div>
+              <div class= form-pass2>
+              <div class="form-group">
+                  <label for="exampleInputPassword1">New username</label>
+                  <input type="password" class="form-control" >
+                </div>
+              <div class="form-group">
+                <label for="exampleInputPasswor2">Confirm username</label>
+                <input type="password" class="form-control" >
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              </div>
+            </form>
+        </div>
+
+        <div class="tabcontent" id="fa">
+          <div class="container">            
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="h3" > My Favorites  <i class="fa fa-star"></i></div>
+                <button type="button" class="btn btn-secondary" onclick="openPage('edit', this)">Edit account</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fm', this)">Favourite movies</button>
+                <button type="button" class="btn btn-primary" onclick="openPage('fa', this)">Favourite actors</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fd', this)">Favourite directors</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fs', this)">Favourite studios</button>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3">
+             {{#each favoritea}}
+              <div class="col mb-4">
+                  <div class="card">  
+                    <img src="{{image}}" onclick="openPage('{{op}}', this)" class="card-img-top" alt="1" width="280" height="525">
+                    <button  type="button" class="btn btn-dark" >Remove from Favorites?</button>
+                    <div class="card-body">
+                      <h5 class="card-title" onclick="openPage('{{op}}', this)">{{name_actor}} </h5>
+                      <p class="card-text">{{Tipo}}</p>
+                    </div>
+                  </div>
+              </div>
+              {{/each }} 
+          </div>    
+              </div>
+        </div>
+
+        <div class="tabcontent" id="fd">
+          <div class="container">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="h3" > My Favorites  <i class="fa fa-star"></i></div>
+                <button type="button" class="btn btn-secondary" onclick="openPage('edit', this)">Edit account</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fm', this)">Favourite movies</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fa', this)">Favourite actors</button>
+                <button type="button" class="btn btn-primary" onclick="openPage('fd', this)">Favourite directors</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fs', this)">Favourite studios</button>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3">
+             {{#each favorited}}
+              <div class="col mb-4">
+                  <div class="card">  
+                    <img src="{{image}}" onclick="openPage('{{op}}', this)" class="card-img-top" alt="1" width="280" height="525">
+                    <button  type="button" class="btn btn-dark" >Remove from Favorites?</button>
+                    <div class="card-body">
+                      <h5 class="card-title" onclick="openPage('{{op}}', this)">{{name_dir}} </h5>
+                      <p class="card-text">{{Tipo}}</p>
+                    </div>
+                  </div>
+              </div>
+              {{/each }} 
+          </div>    
+              </div>
+
+        </div>
+
+        <div class="tabcontent" id="fm">
+          <div class="container">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="h3" > My Favorites  <i class="fa fa-star"></i></div>
+                <button type="button" class="btn btn-secondary" onclick="openPage('edit', this)">Edit account</button>
+                <button type="button" class="btn btn-primary" onclick="openPage('fm', this)">Favourite movies</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fa', this)">Favourite actors</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fd', this)">Favourite directors</button>
+                <button type="button" class="btn btn-secondary" onclick="openPage('fs', this)">Favourite studios</button>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3">
+              {{#each favoritem}}
+              <div class="col mb-4">
+                  <div class="card">  
+                    <img src="{{image}}" onclick="openPage('{{op}}', this)" class="card-img-top" alt="1" width="280" height="525">
+                    <button  type="button" class="btn btn-dark" >Remove from Favorites?</button>
+                    <div class="card-body">
+                      <h5 class="card-title" onclick="openPage('50', this)">{{name_movie}} </h5>
+                      <p class="card-text">{{Tipo}}</p>
+                    </div>
+                  </div>
+              </div>
+              {{/each }}                    
+            </div>   
+          </div>
+
+        </div>
+
+        <div class="tabcontent" id="fs">
+          <div class="container">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <div class="h3" > My Favorites  <i class="fa fa-star"></i></div>
+              <button type="button" class="btn btn-secondary" onclick="openPage('edit', this)">Edit account</button>
+              <button type="button" class="btn btn-secondary" onclick="openPage('fm', this)">Favourite movies</button>
+              <button type="button" class="btn btn-secondary" onclick="openPage('fa', this)">Favourite actors</button>
+              <button type="button" class="btn btn-secondary" onclick="openPage('fd', this)">Favourite directors</button>
+              <button type="button" class="btn btn-primary" onclick="openPage('fs', this)">Favourite studios</button>
+          </div>
+          <div class="row row-cols-1 row-cols-md-2">
+              {{#each favorites}}
+              <div class="col mb-4">
+                  <div class="card">  
+                    <img src="{{image}}" onclick="openPage('{{op}}', this)" class="card-img-top" alt="1" width="280" height="525">
+                    <button  type="button" class="btn btn-dark" >Remove from Favorites?</button>
+                    <div class="card-body">
+                      <h5 class="card-title" onclick="openPage('50', this)">{{name_studio}} </h5>
+                      <p class="card-text">{{Tipo}}</p>
+                    </div>
+                  </div>
+              </div>
+              {{/each }} 
+        </div>
+
+              </div>
+
+        </div>
+      
+    </header>
+    <script>
+        document.getElementById("lg").click();
+
+        const registar = document.getElementById('registerUser');
+        registar.onclick= () => {
+          registerUser()
+        }         
+
+        function registerUser() {
+          var registerUsername = document.getElementById('newUsername').value
+          var registerPassword = document.getElementById('newPassword').value
+          var registerPassword2 = document.getElementById('newPassword2').value
+          var registerEmail = document.getElementById('newEmail').value 
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({registerUsername, registerPassword, registerPassword2,registerEmail });
+          return fetch(`${urlBase}regist`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta) => {
+            console.log(resposta);
+            return resposta.json();
+
+          }).then((resultado) =>{
+            if (resultado == "3"){
+              alert("User registed.");
+              openPage("Login");
+            }else if(resultado == "1"){
+              alert("Email already registed.");
+              openPage("Register");
+            }else{
+              alert("Passwords do not match.")
+            }
+          })
+          document.getElementById("newUsername").value=""
+          document.getElementById("newPassword").value=""
+          document.getElementById("newPassword2").value=""
+          document.getElementById("newEmail").value=""
+
+        }
+
+        const logar = document.getElementById('logar');
+        logar.onclick= () => {
+          login()
+        }         
+
+        function login() {
+          var username = document.getElementById('username').value
+          var password = document.getElementById('password').value
+          var a = document.getElementById("profile-name").value;   
+
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({username, password });
+          return fetch(`${urlBase}login`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta1) => {
+            console.log(resposta1);
+            return resposta1.json();
+
+          }).then((resultado1) =>{
+            if (resultado1 == "4"){
+              alert("Provide an username and password");
+              openPage("Login");
+            }else if(resultado1 == "5"){
+              alert("Credentials wrong.");
+              openPage("Login");
+            }else if(resultado1 == "7"){
+              alert("username not registed.");
+              openPage("Login");
+            }else{
+              alert("Login sucessful.");
+              document.getElementById("profile-name").text = username;
+              console.log(username);
+              openPage("Home");
+              x();
+            }
+          })
+          document.getElementById("username").value=""
+          document.getElementById("password").value=""
+        }
+
+        function openPage(pageName) {
+            let i, tabcontent;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+            document.getElementById(pageName).style.display = "block";
+        }
+
+        function x() {
+          var element = document.getElementById("show");
+          element.classList.remove("hidden");
+          document.getElementById("lg").style.display="none";
+          document.getElementById("admin").style.display="none";
+
+        }
+
+        function y() {
+          var username = document.getElementById('username').value
+          var element = document.getElementById("show");
+          element.classList.add("hidden");
+          console.log(username + ' logged out.')
+          openPage("Login")
+          document.getElementById("lg").style.display="block";
+          document.getElementById("admin").style.display="block";
+
+        }
+
+        function done(){
+          var email = document.getElementById('email').value
+          if (email == ''){
+            openPage("Recovery")
+          }else{
+            alert("Email sent")
+            openPage("Login")
+          }
+        }
+
+        function updateP(){
+          var q = document.getElementById("password").value
+          var s = document.getElementById("cpassword").value
+          var s1 = document.getElementById("cpassword2").value
+          for(var p = 0; p < objPeople.length; p++){
+            if (s==s1){
+              objPeople[p].password=s
+              alert("Password changed!")
+              console.log(objPeople)
+              break
+            }else{
+              alert("Old password is wrong!")
+              break      
+            }
+          }
+          document.getElementById("cpassword").value=""
+          document.getElementById("cpassword2").value=""
+          document.getElementById("opassword").value=""
+        }
+
+
+        function logad(){
+          var us = document.getElementById('adminusername').value
+          var pa = document.getElementById('adminpassword').value
+          if(us=="admin" && pa == "admin" ){
+            openPage("editad")
+            alert("Access Allowed")
+          }else{
+            alert("Access denied")
+            openPage("Loginad")
+          }
+          document.getElementById("adminusername").value=""
+          document.getElementById("adminpassword").value=""
+
+        }
+
+        function am(){
+          const moviename = document.getElementById("newmoviename").value;
+          const movietype = document.getElementById("newtype").value;
+          const movieimage = document.getElementById("newmovieimage").value;
+          const movieop = document.getElementById("newop").value;
+          const movieresume = document.getElementById("newresume").value;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({moviename, movietype, movieimage, movieop, movieresume});
+          return fetch(`${urlBase}am`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta10) =>{
+            console.log(resposta10);
+            return resposta10.json();
+          }).then((resultado10) => {
+            if(resultado10 == "13"){
+              alert("Movie added.");
+              //hr();
+            }
+          })
+          } 
+
+        function aa(){
+          const actorname = document.getElementById("newactorname").value;
+          const actorbio = document.getElementById("newactorbio").value;
+          const actorimage = document.getElementById("newactorimage").value;
+          const actorop = document.getElementById("newactorop").value;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({actorname, actorbio, actorimage, actorop});
+          return fetch(`${urlBase}aa`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta11) =>{
+            console.log(resposta11);
+            return resposta11.json();
+          }).then((resultado12) => {
+            if(resultado12 == "14"){
+              alert("Actor added.");
+              //hr();
+            }
+          })
+          }
+
+        function ad(){
+          const directorname = document.getElementById("newdirectorname").value;
+          const directorbio = document.getElementById("newdirectorbio").value;
+          const directorimage = document.getElementById("newdirectorimage").value;
+          const directorop = document.getElementById("newdirectorop").value;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({directorname, directorbio, directorimage, directorop});
+          return fetch(`${urlBase}ad`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta19) =>{
+            console.log(resposta19);
+            return resposta19.json();
+          }).then((resultado22) => {
+            if(resultado22 == "16"){
+              alert("Director added.");
+              //hr();
+            }
+          })
+          }
+
+        function as(){
+          const studioname = document.getElementById("newstudioname").value;
+          const studiobio = document.getElementById("newstudiobio").value;
+          const studioimage = document.getElementById("newstudioimage").value;
+          const studioop = document.getElementById("newstudioop").value;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({studioname, studiobio, studioimage, studioop});
+          return fetch(`${urlBase}as`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta29) =>{
+            console.log(resposta29);
+            return resposta29.json();
+          }).then((resultado42) => {
+            if(resultado42 == "21"){
+              alert("Studio added.");
+              //hr();
+            }
+          })
+          }
+
+        function rm(id){
+          console.log(id);
+          const removem = id;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({removem });
+          return fetch(`${urlBase}rm`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta3) =>{
+            console.log(resposta3);
+            return resposta3.json();
+          }).then((resultado3) => {
+            if(resultado3 == "8"){
+              alert("Movie removed.");
+              hr();
+            }
+          })
+          } 
+        
+        function ra(id){
+          console.log(id);
+          const removea = id;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({removea });
+          return fetch(`${urlBase}ra`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta16) =>{
+            console.log(resposta16);
+            return resposta16.json();
+          }).then((resultado30) => {
+            if(resultado30 == "15"){
+              alert("Actor removed.");
+              hr();
+            }
+          })
+          } 
+
+        function rd(id){
+          console.log(id);
+          const removed = id;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({removed });
+          return fetch(`${urlBase}rd`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta18) =>{
+            console.log(resposta18);
+            return resposta18.json();
+          }).then((resultado33) => {
+            if(resultado33 == "18"){
+              alert("Director removed.");
+              hr();
+            }
+          })
+          } 
+
+        function rs(id){
+          console.log(id);
+          const removes = id;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({removes });
+          return fetch(`${urlBase}rs`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta28) =>{
+            console.log(resposta28);
+            return resposta28.json();
+          }).then((resultado46) => {
+            if(resultado46 == "33"){
+              alert("Studio removed.");
+              hr();
+            }
+          })
+          } 
+
+        function hr() {
+          var element = document.getElementById("ele").value;
+          element.classList.add("hidden");
+        }
+        
+        function addf(id){
+          console.log(id);
+          const addm = id; 
+          const username = document.getElementById("username").value;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({addm, username });
+          return fetch(`${urlBase}addf`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta4) =>{
+            console.log(resposta4);
+            return resposta4.json();
+          }).then((resultado4) => {
+            if(resultado4 == "9"){
+              alert("Movie added to favorit list.");
+              //hr();
+            }
+          })
+          } 
+
+        function addd(id){
+          console.log(id);
+          const addd = id; 
+          const username = document.getElementById("username").value;
+          const urlBase = "http://localhost:5000/";
+          const body = JSON.stringify({addd, username });
+          return fetch(`${urlBase}addd`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: body
+          }).then((resposta5) =>{
+            console.log(resposta5);
+            return resposta5.json();
+          }).then((resultado5) => {
+            if(resultado5 == "10"){
+              alert("Director added to favorit list.");
+              //hr();
+            }
+          })
+          } 
+
+        function admin(){
+          openPage("Back");
+        }
+
+
+     </script>
+</body>
+</html>
+         
